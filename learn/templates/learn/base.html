@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		
+		<!-- Custom Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'learn/css/bootstrap.css' %}">
+		<link rel="stylesheet" href="{% static 'learn/vendors/linericon/style.css' %}">
+		<link rel="stylesheet" href="{% static 'learn/css/font-awesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'learn/vendors/owl-carousel/owl.carousel.min.css' %}">
+		<link rel="stylesheet" href="{% static 'learn/vendors/lightbox/simpleLightbox.css' %}">
+		<link rel="stylesheet" href="{% static 'learn/vendors/nice-select/css/nice-select.css' %}">
+		<link rel="stylesheet" href="{% static 'learn/vendors/animate-css/animate.css' %}">
+		<link rel="stylesheet" href="{% static 'learn/vendors/popup/magnific-popup.css' %}">
+		<link href="{% static 'learn/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %} " rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="{% static 'learn/styles/contact.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'learn/styles/contact_responsive.css' %}">
+		
+
+		<link rel="stylesheet" type="text/css" href="{% static 'learn/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'learn/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'learn/plugins/OwlCarousel2-2.2.1/animate.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'learn/styles/main_styles.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'learn/styles/responsive.css' %}">
+		
+   <!-- <script src="/scripts/jquery.min.js"></script>
+   <script src="/bootstrap/js/bootstrap.min.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="{% static 'learn/main.css' %}">
+		<link rel="stylesheet" href="{% static 'learn/mycss.css' %}">
+		<!-- CUSTOM CSS -->
+		<link rel="stylesheet" type="text/css" href="{% static 'learn/css/style.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'learn/css/responsive.css' %}">
+	
+		<link rel="icon" href="{% static 'learn/img/logo_learn.jpg' %}" type="image/png">
+		{% if title %}
+			<title>Learn - {{ title }}</title>
+		{% else %}
+			<title>Learn</title>
+		{% endif %}
+	</head>
+	<body>
+		<header class="header_area">
+			<!-- <div class="main_menu">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container">
+						
+						<a class="navbar-brand logo_h" href="{% url 'learn-home' %}"><img src="{% static 'learn/img/logo_learn.jpg' %}" alt="" height="50" widht="50px"></a>
+	
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+	
+					
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+							<ul class="nav navbar-nav menu_nav mr-auto">
+								<li class="nav-item"><a class="nav-link" href="{% url 'learn-home' %}">Home</a></li> 
+								<li class="nav-item"><a class="nav-link" href="{% url 'learn-about' %}">About</a></li> 
+								<li class="nav-item"><a class="nav-link" href="{% url 'learn-contact' %}">Contact</a></li>
+							</ul>
+							<ul class="nav navbar-nav menu_nav ml-auto">
+								{% if user.is_authenticated %}
+									<li class="nav-item"><a class="nav-link" href="/admin/">{{user.username}}</a></li>
+									<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+								{% else %}
+									<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Admin</a></li>
+								{% endif %}
+							</ul>
+						</div> 
+					</div>
+				   </nav>
+			</div> -->
+			<div class="header_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="header_content d-flex flex-row align-items-center justify-content-start">
+	
+									<img src="{% static 'learn/img/logo_learn.jpg' %}" width="50" height="50">
+	
+								<div class="logo_container mr-auto">
+	
+									<a href="{% url 'learn-home' %}">
+										<div class="logo_text">	Learn</div>
+									</a>
+								</div>
+								<nav class="main_nav_contaner">
+									<ul class="main_nav">
+										<li><a href="{% url 'learn-home' %}">Home</a></li>
+										<li><a href="{% url 'learn-about' %}">About</a></li>
+										<li><a href="{% url 'learn-contact' %}">Contact</a></li>
+										{% if user.is_authenticated %}
+											<li><a href="/admin/">{{user.username}}</a></li>
+										{% endif %}
+									</ul>
+								</nav>
+								<div class="header_content_right ml-auto text-right">
+									<!-- <div class="header_search">
+										<div class="search_form_container">
+											<form action="#" id="search_form" class="search_form trans_400">
+												<input type="search" class="header_search_input trans_400" placeholder="Type for Search" required="required">
+												<div class="search_button">
+													<i class="fa fa-search" aria-hidden="true"></i>
+												</div>
+											</form>
+										</div>
+									</div> -->
+	
+									<!-- Hamburger -->
+									{% if user.is_authenticated %}
+										<nav class="main_nav_contaner">
+											<ul class="main_nav">
+												
+												<li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+			
+											</ul>
+										</nav>
+				
+									{% else %}
+										<div class="user"><a href="{% url 'login' %}"><i class="fa fa-user" aria-hidden="true"></i></a></div>
+										<div class="hamburger menu_mm">
+											<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+										</div>
+									{% endif %}									
+									
+								</div>
+	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		{% block allmighty %}
+		<div class="container">
+			{%block content%}
+			
+			{%endblock content%}
+	
+		</div>
+		{% endblock %}
+	
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</body>
+	</html>

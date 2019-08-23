@@ -1,0 +1,109 @@
+{% extends "learn/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'learn-course' coursename=coname %}">{{ coname }}</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'learn-topic' coursename=coname topicname=toname %}">{{ toname }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ soname }}</li>
+            </ol>
+        </nav>
+        <div class="row">
+            {% if user.is_authenticated %}
+                <div class="col-lg-10 ">
+            {% else %}
+                <div class="col-lg-12 ">
+            {% endif %}
+                <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Theory</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Diagram</a>
+                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Code</a>
+                    </div>
+                </nav>
+                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        {% if data.theory %}
+                            <p>{{data.theory|linebreaks}}</p>
+                        {% else %}
+                            <small class="text-muted">No theory added to this subtopic</small>
+                        {% endif %}
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        {% if data.diagram.url %}
+                            <img src="{{ data.diagram.url }}" alt="could not load"/>
+                        {% else %}
+                            <small class="text-muted">No diagram added to this subtopic</small>
+                        {% endif %}
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <!-- {% if data.code_py %}
+                            <p><pre><code>{{data.code_py|linenumbers|linebreaks}}</code></pre></p>
+                        {% else %}
+                            <small class="text-muted">No code added to this subtopic</small>
+                        {% endif %} -->
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#home">Python</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#menu1">C++</a>
+                            </li>
+                        </ul>
+                        
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane container active" id="home">
+                                {% if data.code_py %}
+                                    <p><pre><code>{{data.code_py|linenumbers|linebreaks}}</code></pre></p>
+                                {% else %}
+                                    <small class="text-muted">No python code available currently</small>
+                                {% endif %}
+                            </div>
+                            <div class="tab-pane container fade" id="menu1">
+                                <div class="tab-pane container active" id="home">
+                                    {% if data.code_cpp %}
+                                        <p><pre><code>{{data.code_cpp|linenumbers|linebreaks}}</code></pre></p>
+                                    {% else %}
+                                        <small class="text-muted">No C++ code available currently</small>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="tab-pane container fade" id="menu2">...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if user.is_authenticated %}
+                <div class="col-lg-2">
+                    <a href="{% url 'learn-edit' subname=soname %}" role="button" class="btn btn-outline-info mr-auto">Edit</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div id="disqus_thread"></div>
+    
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://learn-2.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//learn-2.disqus.com/count.js" async></script>  
+ {% endblock content %}

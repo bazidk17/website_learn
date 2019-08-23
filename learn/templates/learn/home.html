@@ -1,0 +1,59 @@
+{% extends "learn/base.html" %}
+{% load static %}
+{% block allmighty %}
+	
+	<div class="home">
+		<div class="home_background" style="background-image: url(static/learn/img/index_background.jpg);"></div>
+			<div class="home_content">
+				<div class="container">
+					<div class="row">
+						<div class="col text-center">
+							<h1 class="home_title">Learn Easily</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+
+	<div class="courses">
+		<div class="courses_background"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<h2 class="section_title text-center">Our Courses</h2>
+				</div>
+			</div>
+			<div class="row courses_row">
+
+					<!-- Course -->
+					{% for one_course in my_courses %}
+					<div class="col-lg-4 course_col">
+						<div class="course">
+							<div class="course_image"><img src="{{ one_course.course_picture.url }}" alt=""></div>
+							<div class="course_body">
+								<div class="course_title"><a href="{% url 'learn-course' coursename=one_course.course_name %}">{{one_course.course_name}}</a></div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+	<!-- <div class="container">
+		<div class="row latest_blog_inner">
+			{% for one_course in my_courses %}
+			<div class="col-lg-3 col-md-6">
+				<div class="l_blog_item">
+					<a href="{% url 'learn-course' coursename=one_course.course_name %}">
+						<img src="{{ one_course.course_picture.url }}" height="150px" width="280px" alt="NOPE"></img>
+						<p>{{one_course.course_picture.url}}</p>
+						<h4>{{one_course.course_name}}</h4>
+					</a>
+						
+				</div>
+			</div>
+			{% endfor %}
+		</div> -->
+			</div>
+			</div>
+			</div>
+
+{% endblock allmighty %}
